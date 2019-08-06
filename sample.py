@@ -9,7 +9,10 @@ def main():
     print('Time is : {}'.format(time.time()))
     print('Python Version is : {}\n'.format(sys.version))
     print('**************************  End Job   *************************')
-    os.mkdir('out')
+    try:
+        os.mkdir('out')
+    except FileExistsError as e:
+        print('Folder out exists\n')
     with open('out/time','w') as fl:
         fl.write('Time is : {}\n'.format(time.time()))
 
