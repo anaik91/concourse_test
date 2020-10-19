@@ -4,7 +4,10 @@ import sys
 import os
 
 def banner(comment):
-    size = int(os.popen('tput cols').read().strip())
+    try:
+        size = int(os.popen('tput cols').read().strip())
+    except ValueError:
+        size = 100
     print('\n')
     print('#' * size)
     print(comment.center(size))
